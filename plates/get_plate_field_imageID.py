@@ -45,10 +45,15 @@ if plateId >= 0:
     print "\nNumber of fields:", plate.getNumberOfFields()
     print "\nGrid size:", plate.getGridSize()
     print "\nWells in Plate:", plate.getName()
+    rowlabels = plate.getRowLabels()
+    columnlabels = plate.getColumnLabels()
     for well in plate.listChildren():
         index = well.countWellSample()
         for index in xrange(0, index):
-            print "Row:", well.row, "Column:",well.column, well.getImage(index).getName(), well.getImage(index).getId()
+            print "Row:", rowlabels[well.row], \
+                "Column:", columnlabels[well.column], \
+                "Field:", index + 1, \
+                well.getImage(index).getName(), well.getImage(index).getId()
 
 # Close connection:
 # =================================================================
